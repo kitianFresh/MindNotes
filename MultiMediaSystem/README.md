@@ -1,22 +1,22 @@
 
-# text compression
-# zero supression
+# Data compression
+## Zero supression
 assumes just one symbol appears particularly often in sequence
 89400000000000000000000000000000000
 we can replace with
 894f32
 
-# RLE
+## RLE
 Original Sequence:
 111122233333311112222
 can be encoded as:
 (1,4),(2,3),(3,6),(1,4),(2,4)
 It is a small compression component used in JPEG compression
 
-# Shannon-Fano Coding
+## Shannon-Fano Coding
 top-down 自顶向下的分解，而且每一次是按照左右概率和均等的原则划分split，但不是最最优的
 
-# Huffman Coding
+## Huffman Coding
 bottom-up 自底向下的分解，每一次重新排序后只取两个最小的merge；最优
 Static Huffman Coding 是two-pass, 因为每一次都要先扫描一遍文件统计词频，然后再扫描一遍进行编码，这给传输带来麻烦；无法运用在工业界
 Adaptive Huffman Coding one-pass , 只用扫描一遍即可！实现code decode
@@ -50,14 +50,17 @@ Cb=0.5 *R              - 0.4187*G     - 0.0813*B+128;
 压缩算法：
  * 有损的离散余弦变换（Discrete Cosine Transform，DCT）；
  * 无损的预测技术压缩。
+
 数据编码方法：
  * 哈夫曼编码；
  * 算术编码；
+
 编码模式：
  * 基于DCT顺序模式(sequential mode)：编/解码通过一次扫描完成；
  * 基于DCT递进模式(progressive mode)：编/解码需要多次扫描完成，扫描效果从粗糙到精细，逐级递进；
  * 无损模式(loss-less mode)：基于DPCM，保证解码后完全精确恢复到原图像采样值；
  * 层次模式(hierarchical mode)：图像在多个空间多种分辨率进行编码，可以根据需要只对低分辨率数据作解码，放弃高分辨率信息。
+
 在实际应用中，JPEG图像使用的是离散余弦变换（傅里叶变换的一种，将连续信号函数拆分为多个离散余弦函数积分的组合去掉噪音和实现压缩存储)、哈夫曼编码、顺序模式。
 
 
