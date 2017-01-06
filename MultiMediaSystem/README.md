@@ -25,7 +25,7 @@ Static Huffman Coding 是two-pass, 因为每一次都要先扫描一遍文件统
 Adaptive Huffman Coding one-pass , 只用扫描一遍即可！实现code decode
 关键点： 
  1. 块：当前相同的weight的node属于同一块！
- 2. 权值更新维持sibling property(即要维护huffman的属性): 同一块中要更新的node，更新时要检查是是否是最大编号，不是则需要和最大编号交互(满足highest order 属性)
+ 2. 权值更新维持sibling property(即要维护huffman的属性): 同一块中要更新的node，更之前要检查是是否是最大编号，不是则需要和最大编号交换(满足highest order 属性)
 
 ## LZW
 LZW是假设字符串中有很多重复的序列会出现，对这些重复序列编码，并且是定长编码，如果重复序列多又长，那么压缩效果就会很好。注意原始LZW 词典使用 4k 个entries， 并且开头256(0-255)是ASCII码；因此，我们会看到，后续的新增的entry是从256开始的；
