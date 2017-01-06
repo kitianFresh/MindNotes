@@ -18,9 +18,10 @@ top-down 自顶向下的分解，而且每一次是按照左右概率和均等�
 
 ## Huffman Coding
 bottom-up 自底向下的分解，每一次重新排序后只取两个最小的merge；最优
-Static Huffman Coding 是two-pass, 因为每一次都要先扫描一遍文件统计词频，然后再扫描一遍进行编码，这给传输带来麻烦；无法运用在工业界
-Adaptive Huffman Coding one-pass , 只用扫描一遍即可！实现code decode
 
+Static Huffman Coding 是two-pass, 因为每一次都要先扫描一遍文件统计词频，然后再扫描一遍进行编码，这给传输带来麻烦；无法运用在工业界
+
+Adaptive Huffman Coding one-pass , 只用扫描一遍即可！实现code decode
 关键点： 
  1. 块：当前相同的weight的node属于同一块！
  2. 权值更新维持sibling property(即要维护huffman的属性): 同一块中要更新的node，更新时要检查是是否是最大编号，不是则需要和最大编号交互(满足highest order 属性)
@@ -90,23 +91,6 @@ AC系数有很多连续的0，这样就比较适合RLE了，假设有一组矢�
 
 ## Entropy Coding熵编码（采用Huffman编码）：
 为了提高储存效率, JPEG 里并不直接保存数值, 而是将数值按位数分成 16 组:详细的参考[这里](http://rtornados.bokee.com/2442419.html)
- 数值                 组              实际保存值
-                0                   0                   -
-              -1,1                  1                  0,1
-           -3,-2,2,3                2              00,01,10,11
-     -7,-6,-5,-4,4,5,6,7            3    000,001,010,011,100,101,110,111
-       -15,..,-8,8,..,15            4       0000,..,0111,1000,..,1111
-      -31,..,-16,16,..,31           5     00000,..,01111,10000,..,11111
-      -63,..,-32,32,..,63           6                   .
-     -127,..,-64,64,..,127          7                   .
-    -255,..,-128,128,..,255         8                   .
-    -511,..,-256,256,..,511         9                   .
-   -1023,..,-512,512,..,1023       10                   .
-  -2047,..,-1024,1024,..,2047      11                   .
-  -4095,..,-2048,2048,..,4095      12                   .
-  -8191,..,-4096,4096,..,8191      13                   .
--16383,..,-8192,8192,..,16383     14                   .
--32767,..,-16384,16384,..,32767    15                   .
 
 还是来看前面的例子:
     (0,57) ; (0,45) ; (4,23) ; (1,-30) ; (0,-8) ; (2,1) ; (0,0)
@@ -137,6 +121,30 @@ AC系数有很多连续的0，这样就比较适合RLE了，假设有一组矢�
 111000 111001  111000 101101  1111111110011001 10111   11111110110 00001
 1011 0111   11011 1   1010
 
+# JPEG 2000
+1. Multi-Component Transform
+2. **Discrete Wavelet Transform (DWT)**
+   - DWT1, high-pass & low-pass
+
+     ![DWT1]()
+   - DWT2, lifting scheme
+   
+     ![DWT2]()
+3. Dead-Zone Quantization
+4. Tier one coding
+   - Bit Plane Coding (BPC)
+     * 3 coding passes for each bit plane
+       * Significance Propagation Pass (SPP)
+       * Magnitude Refinement Pass (MRP)
+       * Clean Up Pass (CUP)
+     * 4 Coding operations
+       * Zero Coding (ZC), Sign Coding (SC), Magnitude Refinement Coding (MRC), Run Length Coding (RLC)
+   - Binary Arithmetic Coding (BAC)
+5. Tier two coding
+   * Bit Stream Formation
+   * **Tag Tree Coding**
+6. Bit-Rate Control
+7. Region of Interest (ROI)
 
 # 参考
  * [Adaptive Huffman Coding](https://www.cs.duke.edu/csed/curious/compression/adaptivehuff.html)
@@ -144,3 +152,4 @@ AC系数有很多连续的0，这样就比较适合RLE了，假设有一组矢�
  * [color_subsampling_or_what_is_4](http://blogs.adobe.com/VideoRoad/2010/06/color_subsampling_or_what_is_4.html)
  * [what_is_yuv](http://blogs.adobe.com/VideoRoad/2010/06/what_is_yuv.html)
  * [JPEG文件编/解码详解](http://blog.csdn.net/lpt19832003/article/details/1713718)
+ * [M4L1_HJPEG](http://users.ece.utexas.edu/~ryerraballi/MSB/pdfs/M4L1_HJPEG.pdf)
