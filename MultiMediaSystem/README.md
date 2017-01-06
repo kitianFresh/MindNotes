@@ -12,11 +12,12 @@ Original Sequence:
 can be encoded as:
 (1,4),(2,3),(3,6),(1,4),(2,4)
 It is a small compression component used in JPEG compression
-
-## Shannon-Fano Coding
+## Entropy Encoding
+熵编码基于信息和概率，是将固定长度的单个符号映射到不定长度的码字，频率大，码字位数小，频率小，码字位数大；
+### Shannon-Fano Coding
 top-down 自顶向下的分解，而且每一次是按照左右概率和均等的原则划分split，但不是最最优的
 
-## Huffman Coding
+### Huffman Coding
 bottom-up 自底向下的分解，每一次重新排序后只取两个最小的merge；最优
 
 Static Huffman Coding 是two-pass, 因为每一次都要先扫描一遍文件统计词频，然后再扫描一遍进行编码，这给传输带来麻烦；无法运用在工业界
@@ -27,7 +28,7 @@ Adaptive Huffman Coding one-pass , 只用扫描一遍即可！实现code decode
  2. 权值更新维持sibling property(即要维护huffman的属性): 同一块中要更新的node，更新时要检查是是否是最大编号，不是则需要和最大编号交互(满足highest order 属性)
 
 ## LZW
-注意原始LZW 词典使用 4k 个entries， 并且开头256(0-255)是ASCII码；因此，我们会看到，后续的新增的entry是从256开始的；
+LZW是假设字符串中有很多重复的序列会出现，对这些重复序列编码，并且是定长编码，如果重复序列多又长，那么压缩效果就会很好。注意原始LZW 词典使用 4k 个entries， 并且开头256(0-255)是ASCII码；因此，我们会看到，后续的新增的entry是从256开始的；
 LZW-Encoding
 ```
 w = NIL;
