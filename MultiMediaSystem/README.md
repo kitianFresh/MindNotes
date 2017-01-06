@@ -121,15 +121,27 @@ AC系数有很多连续的0，这样就比较适合RLE了，假设有一组矢�
 111000 111001  111000 101101  1111111110011001 10111   11111110110 00001
 1011 0111   11011 1   1010
 
+## JPEG Ecoding Diagram
+![JPEG-Encoding.png](https://github.com/kitianFresh/MindNotes/tree/master/MultiMediaSystem/resources/JPEG-Encoding.png)
+
+## hierarchical mode
+2-level-hierarchical-mode
+
+![2-level-hierarchical-mode](https://github.com/kitianFresh/MindNotes/tree/master/MultiMediaSystem/resources/2-level-hierarchical-mode.png)
+
+3-level-hierarchical-mode
+
+![3-level-hierarchical-mode](https://github.com/kitianFresh/MindNotes/tree/master/MultiMediaSystem/resources/3-level-hierarchical-mode.png)
+
 # JPEG 2000
 1. Multi-Component Transform
 2. **Discrete Wavelet Transform (DWT)**
    - DWT1, high-pass & low-pass
 
-     ![DWT1]()
+     ![DWT1](https://github.com/kitianFresh/MindNotes/tree/master/MultiMediaSystem/resources/DWT1.png)
    - DWT2, lifting scheme
    
-     ![DWT2]()
+     ![DWT2](https://github.com/kitianFresh/MindNotes/tree/master/MultiMediaSystem/resources/DWT2-lifting-scheme.png)
 3. Dead-Zone Quantization
 4. Tier one coding
    - Bit Plane Coding (BPC)
