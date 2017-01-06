@@ -218,6 +218,29 @@ AC系数有很多连续的0，这样就比较适合RLE了，假设有一组矢�
 6. Bit-Rate Control
 7. Region of Interest (ROI)
 
+
+# Video Coding
+对于视频，它是由一组连续的图像构成的，并且相邻图像之间存在很大的相关性，因此整体的传输方式会采用到差分；即原始图像和原始图像的差异；以下是
+H.261
+
+![H.261](resources/H.261.png)
+
+
+Intra-Frame Coding:
+
+![I-frame-Coding.png](resources/I-frame-Coding.png)
+
+Quantization is by constant value for all DCT coefficients (i.e., no quantization table as in JPEG).
+
+H.261 I-frame and P-frame Encoder Diagram
+![I-P-Encoder](resources/I-P-Encoder.png)
+
+MPEG1
+
+![MPEG1-Video](resources/MPEG1-Video.png)
+![MPEG1-Pattern](resources/MPEG1-Pattern.png)
+
+
 # 参考
  * [Adaptive Huffman Coding](https://www.cs.duke.edu/csed/curious/compression/adaptivehuff.html)
  * [Adaptive Huffman Coding demo](http://users.cs.cf.ac.uk/Dave.Marshall/Multimedia/node212.html#SECTION04245000000000000000)
