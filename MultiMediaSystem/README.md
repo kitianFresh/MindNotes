@@ -27,6 +27,64 @@ Adaptive Huffman Coding one-pass , 只用扫描一遍即可！实现code decode
  2. 权值更新维持sibling property(即要维护huffman的属性): 同一块中要更新的node，更新时要检查是是否是最大编号，不是则需要和最大编号交互(满足highest order 属性)
 
 ## LZW
+注意原始LZW 词典使用 4k 个entries， 并且开头256(0-255)是ASCII码；因此，我们会看到，后续的新增的entry是从256开始的；
+LZW-Encoding
+```
+w = NIL;
+while ( read a character k )
+{
+    if wk exists in the dictionary
+        w = wk;
+    else
+    { 
+        add wk to the dictionary(so wk is stored);
+        output the code for w;
+        w = k; 
+    }
+}
+
+Original LZW used dictionary with 4K entries, first
+256 (0-255) are ASCII codes.
+Example: Input string is
+"^WED^WE^WEE^WEB^WET".
+Steps:
+w   k   Output Index Symbol
+NIL ^  
+^   W   ^       256   ^W
+W   E   W       257   WE
+E   D   E       258   ED
+D   ^   D       259   D^
+^   W    
+^W  E   256     260   ^WE
+E   ^   E       261   E^
+^   W    
+^W  E    
+^WE E   260     262   ^WEE
+......
+```
+LZW-Decoding
+```
+read a character k;
+output k;
+w = k;
+while ( read a character k ) /* k could be a character or a code. */
+{
+    entry = dictionary entry for k;
+    output entry;
+    add w + entry[0] to dictionary;
+    w = entry;
+}
+
+Example:
+Input string is "^WED<256>E<260><261><257>B<260>T".
+Steps:
+w    k      Output  Index Symbol
+^    ^     
+^    W      W       256    ^W
+W    E      E       257    WE
+E    D      D       258    ED
+D    <256>  ^W      259    D
+```
 
 # JPEG
 ## 色彩模型：
