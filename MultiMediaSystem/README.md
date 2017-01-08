@@ -216,6 +216,7 @@ AC系数有很多连续的0，这样就比较适合RLE了，假设有一组矢�
 5. Tier two coding
    * Bit Stream Formation
    * **Tag Tree Coding**
+   ![tag-tree](resources/tag-tree.jpg)
 6. Bit-Rate Control
 7. Region of Interest (ROI)
 
