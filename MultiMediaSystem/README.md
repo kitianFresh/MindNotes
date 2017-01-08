@@ -86,6 +86,8 @@ W    E      E       257    WE
 E    D      D       258    ED
 D    <256>  ^W      259    D^
 ```
+## Arithmetic Encoding
+ ![Arithmetic Encoding](resources/Arithmetic-Encoding.png) 
 
 # JPEG
 ## 色彩模型：
