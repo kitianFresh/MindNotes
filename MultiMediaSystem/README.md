@@ -241,6 +241,30 @@ MPEG1
 ![MPEG1-Video](resources/MPEG1-Video.png)
 ![MPEG1-Pattern](resources/MPEG1-Pattern.png)
 
+# Multimedia Streaming
+RTP/RTCP(real-time protocol / real-time control protocol)
+   * media transport: send data add meta data
+   * based on udp, because real-time
+   * RTP header:
+     - version, csrc count, padding, marker, extension, payload type, timestamp
+   ![RTP](resources/RTP.png)
+   ![RTCP](resources/RTCP.png)
+
+SDP(session description protocol)
+   * describe the session and content
+   ![SDP](resources/SDP.png)
+
+RTSP(real-time streaming protocol)
+   * stream control
+   * RTSP Operation
+   ![RTSP-Operation](resources/RTSP-Operation.png)
+   * RTSP Session
+   ![RTSP-Session](resources/RTSP-Session.png)
+
+SIP(session initiation protocol)
+   * start session
+   * SIP Proxy
+   ![SIP](resources/SIP&proxy.png)
 
 # 参考
  * [Adaptive Huffman Coding](https://www.cs.duke.edu/csed/curious/compression/adaptivehuff.html)
